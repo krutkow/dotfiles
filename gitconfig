@@ -2,6 +2,10 @@
   name = Kristin Rutkowski
   email = kristin.l.rutkowski@nasa.gov
 
+[core]
+  # global gitignore file
+	excludesfile = /Users/kristinrutkowskiwork/.gitignore_global
+	
 [push]
   default = simple
 
