@@ -1,0 +1,65 @@
+[user]
+  name = Kristin Rutkowski
+  email = kristin.l.rutkowski@nasa.gov
+
+[push]
+  default = simple
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow bold
+  local = green bold
+  remote = cyan bold
+
+[color "status"]
+  added = yellow bold
+  changed = green bold
+  untracked = cyan bold
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+
+[alias]
+# https://gist.github.com/pksunkara/988716 for more aliases
+# https://git-scm.com/docs/
+  #############
+  a = add             # add files to this branch
+  #############
+  b = branch          # show branches you have checked out
+  ba = branch -a      # show all of the branches, even remote
+  bd = branch -d      # <branch> delete a branch
+  bdd = branch -D     # shortcut for --delete --force
+  br = branch -r      # show only remote branches
+  #############
+  co = checkout       # switch to a branch
+  cob = checkout -b   # create a branch and check it out immediately
+  #############
+  c = commit          # Record changes to the repository
+  ca = commit -a      # stage files that have been modified and deleted (new files you have not told Git about are not affected)
+  cm = commit -m      # <msg> pass a message --message=<msg>
+  cam = commit -am    
+  #############
+  m = merge
+  #############
+  pl = pull
+  #############
+  ps = push
+  #############
+  rm = remote -v      # list of any configured remote urls
+  #############
+  s = status          # show the current local working directory status
+  sa = status -uall   # show all untracked files and directories
+  su = status -uno    # show no untracked files
+  #############
+  sh = stash
+  #############
+
+
+
