@@ -1,0 +1,26 @@
+# .gitignore file
+
+# some tips from https://gist.github.com/pksunkara/988716
+
+
+# misc #
+########
+bashrc
+
+
+# My logs #
+###########
+klr*
+
+
+# OS generated files #
+######################
+.DS_Store
+
+
+# netbeans files #
+######################
+**/nbproject/
+
+
+
