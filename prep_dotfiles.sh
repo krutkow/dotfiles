@@ -16,7 +16,7 @@ dotfilesdir=~/dotfiles
 olddir=~/dotfiles_old
 
 # list of files/folders to symlink in homedir
-files="bashrc vimrc gitconfig gitignore"
+files="bashrc vimrc gitconfig gitignore_global"
 
 ##########
 
