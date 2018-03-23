@@ -129,11 +129,11 @@ set pastetoggle=<F11>
 " set tab size when looking in vi
 set tabstop=2
 
-" expand tabs to spaces
-set expandtab
-
 " an indent will correspond to a single tab
 set shiftwidth=2
+
+" expand tabs to spaces
+set expandtab
 
 " tab key will go to next level of indentation
 set smarttab
