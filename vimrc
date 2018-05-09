@@ -34,8 +34,8 @@ set mouse=a
 " display line numbers on the left
 set number
 
-"colorscheme koehler
-colorscheme zellner
+"koehler or murphy or slate or torte
+colorscheme murphy
 
 " 
 set background=dark
