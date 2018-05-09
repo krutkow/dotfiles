@@ -28,9 +28,6 @@ filetype indent plugin on
 " display syntax highlighting
 syntax on
 
-" Enable use of the mouse for all modes
-set mouse=a
-
 " display line numbers on the left
 set number
 
