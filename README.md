@@ -9,7 +9,7 @@ computer settings
 ## Installation
 
 Clone from github.
-> git clone git@github.com/krutkow/dotfiles.git
+> git clone https://github.com/krutkow/dotfiles.git
 
 Back up the dot files already existing in the home dir.
 
