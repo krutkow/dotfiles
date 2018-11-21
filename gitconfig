@@ -50,19 +50,31 @@
   cm = commit -m      # <msg> pass a message --message=<msg>
   cam = commit -am    
   #############
+  l = log
+  tree = log --graph --date=short --pretty=format:'%C(auto) %h | %cn | %cd |%d %s'
+  # https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
+  # %C(auto)  auto coloring
+  # %h        abbreviated commit hash 
+  # %cn       committer name
+  # %cd       committer date (format respects --date= option)
+  # %d        ref names, like the --decorate option of git-log(1)
+  # %s        subject
+  #############
   m = merge
   #############
   pl = pull
   #############
   ps = push
   #############
-  rm = remote -v      # list of any configured remote urls
+  rmv = remote -v     # list of any configured remote urls (alias whichrepo)
+  #############
+  sh = show
   #############
   s = status          # show the current local working directory status
   sa = status -uall   # show all untracked files and directories
   su = status -uno    # show no untracked files
   #############
-  sh = stash
+  st = stash
   #############
 
 

@@ -16,7 +16,7 @@ dotfilesdir=~/dotfiles
 olddir=~/dotfiles_old
 
 # list of files/folders to symlink in homedir
-files="bashrc vimrc gitconfig gitignore_global"
+files="bashrc vimrc screenrc gitconfig gitignore_global"
 
 ##########
 
@@ -34,3 +34,7 @@ for file in $files; do
 done
 
 echo "Finished"
+
+# +++ also remember to link the bash_profile file:
+# ln -s ~/dotfiles/bash_profile_mac ~/.bash_profile
+# ln -s ~/dotfiles/bash_profile_linux ~/.bash_profile

@@ -15,6 +15,7 @@ klr*
 # OS generated files #
 ######################
 .DS_Store
+.Trashes
 
 
 # netbeans files #
