@@ -78,4 +78,12 @@
   #############
 
 
+# so that 'branch' shows up directly in terminal output, rather than in 'less'
+[pager]
+  branch = false
+
+
+
+
+
 
