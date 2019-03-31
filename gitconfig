@@ -34,23 +34,23 @@
 # https://gist.github.com/pksunkara/988716 for more aliases
 # https://git-scm.com/docs/
   #############
-  a = add             # add files to this branch
+  a    = add             # add files to this branch
   #############
-  b = branch          # show branches you have checked out
-  ba = branch -a      # show all of the branches, even remote
-  bd = branch -d      # <branch> delete a branch
-  bdd = branch -D     # shortcut for --delete --force
-  br = branch -r      # show only remote branches
+  b    = branch           # show branches you have checked out
+  ba   = branch -a        # show all of the branches, even remote
+  bd   = branch -d        # <branch> delete a branch
+  bdd  = branch -D        # shortcut for --delete --force
+  br   = branch -r        # show only remote branches
   #############
-  co = checkout       # switch to a branch
-  cob = checkout -b   # create a branch and check it out immediately
+  co   = checkout         # switch to a branch
+  cob  = checkout -b      # create a branch and check it out immediately
   #############
-  c = commit          # Record changes to the repository
-  ca = commit -a      # stage files that have been modified and deleted (new files you have not told Git about are not affected)
-  cm = commit -m      # <msg> pass a message --message=<msg>
-  cam = commit -am    
+  c    = commit           # Record changes to the repository
+  ca   = commit -a        # stage files that have been modified and deleted (new files you have not told Git about are not affected)
+  cm   = commit -m        # <msg> pass a message --message=<msg>
+  cam  = commit -am    
   #############
-  l = log
+  l    = log
   tree = log --graph --date=short --pretty=format:'%C(auto) %h | %cn | %cd |%d %s'
   # https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
   # %C(auto)  auto coloring
@@ -59,20 +59,22 @@
   # %cd       committer date (format respects --date= option)
   # %d        ref names, like the --decorate option of git-log(1)
   # %s        subject
+  ln   = log --name-only
+  lns  = log --name-status
   #############
-  m = merge
+  m    = merge
   #############
-  pl = pull
+  pl   = pull
   #############
-  ps = push
+  ps   = push
   #############
-  rmv = remote -v     # list of any configured remote urls (alias whichrepo)
+  rmv  = remote -v        # list of any configured remote urls (alias whichrepo)
   #############
-  sh = show
+  sh   = show
   #############
-  s = status          # show the current local working directory status
-  sa = status -uall   # show all untracked files and directories
-  su = status -uno    # show no untracked files
+  s    = status           # show the current local working directory status
+  sa   = status -uall     # show all untracked files and directories
+  su   = status -uno      # show no untracked files
   #############
   st = stash
   #############
