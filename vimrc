@@ -32,7 +32,7 @@ syntax on
 set number
 
 "koehler or murphy or slate or torte
-colorscheme koehler
+colorscheme murphy
 
 " 
 set background=dark
