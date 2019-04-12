@@ -5,10 +5,7 @@
 [core]
   # global gitignore file
 	excludesfile = ~/.gitignore_global
-	
-[push]
-  default = simple
-
+  
 [color]
   ui = auto
 
@@ -28,6 +25,14 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+
+# so that 'branch' shows up directly in terminal output, rather than in 'less'
+[pager]
+  branch = false
+  
+# only push to the branch you're on (requires upstream to be set)
+[push]
+  default = simple
 
 
 [alias]
@@ -79,10 +84,6 @@
   st = stash
   #############
 
-
-# so that 'branch' shows up directly in terminal output, rather than in 'less'
-[pager]
-  branch = false
 
 
 
