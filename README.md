@@ -1,6 +1,7 @@
 # dotfiles
 
 Configuration files listing program settings.
+
 Kristin Rutkowski
 
 Useful for: 
