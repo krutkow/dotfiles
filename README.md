@@ -5,8 +5,8 @@ Configuration files listing program settings.
 Kristin Rutkowski
 
 Useful for: 
-editor settings
-computer settings
+* editor settings
+* computer settings
 
 ## Installation
 
