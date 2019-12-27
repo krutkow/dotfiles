@@ -31,6 +31,7 @@ syntax on
 " display line numbers on the left
 set number
 
+" :colo
 "koehler or murphy or slate or torte
 colorscheme murphy
 
