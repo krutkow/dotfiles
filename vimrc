@@ -114,6 +114,7 @@ set confirm
 set backspace=indent,eol,start
 
 " Enable use of the mouse for all modes
+" this should be commented out on the d@nisci account
 set mouse=a
 
 " Use <F11> to toggle between 'paste' and 'nopaste'
