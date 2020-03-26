@@ -18,6 +18,7 @@ olddir=~/dotfiles_old
 # list of files/folders to symlink in homedir
 files="bashrc vimrc screenrc gitconfig gitignore_global sqliterc latex2html-init"
 
+
 ##########
 
 # create dotfiles_old in homedir

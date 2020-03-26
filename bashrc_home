@@ -1,0 +1,236 @@
+# K. Rutkowski
+# .bashrc
+# 20191226
+
+# currently on:
+#   my macbook
+
+# to change default shell: 	chsh -s /bin/bash
+
+# suppress the zsh notification in Catalina
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+
+# ========================================
+#  WHICH MACHINE AM I ON
+# ========================================
+
+export WHOIAM=$(/usr/bin/whoami)
+
+export ME=klrutkow
+
+WORKMACHINE=$(uname -n)
+
+WHICHOS="mac"
+HOMEDIR="/Users/kristin/Documents"
+APPDIR="/Applications"
+
+# use coreutils from Homebrew to get the -- options (needed for mac)
+# > brew install coreutils
+WHICHLS='gls'
+
+export HOMEDIR
+
+
+
+# ========================================
+#    ALIASES, ENV VARS, ETC
+# ========================================
+
+# source this file
+alias sbash="source ~/.bashrc"
+
+# -g  highligh only string found by last search command, rather than all strings
+# -N  display line numbers
+# -M  display name of file
+# -R  keep ANSI "color" escape sequences output "raw"
+# -S  truncate long lines rather than wrap
+# -#n default number of positions to scroll horizontally
+# -~  display lines after end of file as blank, rather than as ~
+export LESS='-RNM'
+
+# show colors in dir listing
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# -G    show colors
+# -p    put / after directories
+# -F    put / after dirs, * after exe's, | after pipes, @ after symlinks, etc
+# -h    sizes are human readable
+# -d    list directories themselves, not their contents
+
+alias ls="pwd && $WHICHLS -F --color"  
+alias lsdf="ls --group-directories-first"  
+# show in a list
+alias ls1="ls -1"
+alias ll="ls -lh --group-directories-first"
+alias lltr="ll -tr"
+# Show only hidden files
+alias ll.="ll -d .*"
+# show only dirs
+alias lsd="ls -d */"
+alias lsd1="ls -1d */"
+
+# show pwd after cd, then list contents
+#   I probably shouldn't name the fn 'cd', but I like it better
+#   http://superuser.com/questions/296551/
+#   better to use functions than aliases:
+#   http://stackoverflow.com/questions/13547809/
+function cdls() { builtin cd "$@" && ls; }
+function cdl() { builtin cd "$@" && ll; }
+
+alias docs='cdl $HOMEDIR'
+alias lldocs='ll $HOMEDIR'
+
+# I want df on a full line, with the human readable numbers
+alias df="df -hP"
+
+# keep grep colors when piping
+alias grep="grep --color=always"
+
+# list the size of directories
+alias duh1='du -h -d 1'
+alias dub1='du -b -d 1'
+
+# set a file to executable
+alias setex='chmod u+x '
+
+# list all my defined functions and aliases
+alias functions='declare -F'
+alias all='alias ; functions'
+
+# to prevent accidentally logging out of shell
+exit() {
+  read -t5 -n1 -p "Do you really wish to exit this shell? [yN] " should_exit || should_exit=y
+  case $should_exit in
+    [Yy] ) builtin exit $1 ;;
+    * ) printf "\n" ;;
+  esac
+}
+alias logout="exit"
+alias lo='logout'
+
+# put current date time in filename: touch myfile.$(currdt)
+alias currdt="date +%Y%m%d_%H%M%S"
+
+# so that crontab uses vim, and my vimrc
+export EDITOR='/usr/bin/vim'
+
+# backup to external hard drive
+alias bu="source $HOMEDIR/scripts/backup.sh work"
+
+# display my pw
+alias smug="cat /Users/klrutkow/Documents/personal/smug.txt"
+
+
+
+# ========================================
+#   open applications
+# ========================================
+
+alias vi="vim"
+alias vir="vi -R"
+
+
+
+# ========================================
+#   git and repository aliases
+# ========================================
+
+alias g="git"
+alias whichrepo="g remote -v"
+
+# https://stackoverflow.com/questions/3144647/git-show-all-files-changed-between-two-commits/35705521
+alias checkedin="git log --name-only --pretty=oneline --full-index origin^^..HEAD | grep -vE '^[0-9a-f]{40} ' | sort | uniq"
+
+# for git tab completion
+# https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+if [ -f $HOMEDIR/scripts/git-completion.bash ]; then
+  source $HOMEDIR/scripts/git-completion.bash
+fi
+
+# my personal repo
+#alias getdot='git clone https://github.com/krutkow/dotfiles.git'
+alias getdot='git clone git@github.com:krutkow/dotfiles.git'
+alias getscripts='git clone git@github.com:krutkow/scripts.git'
+
+
+
+# ========================================
+#      Setting the prompt
+# ========================================
+
+# http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+# https://unix.stackexchange.com/questions/140610/using-variables-to-store-terminal-color-codes-for-ps1
+# https://wiki.archlinux.org/index.php/Bash/Prompt_customization
+# https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+#   \a    ASCII bell character (07)
+#   \e    ASCII escape character (033)
+#   \h    hostname up to the first '.'
+#   \w    full working directory, $HOME abbreviated as tilde
+#   \W     basename of the working directory, $HOME abbreviated as tilde
+#   \u     username
+#   \[    begin a sequence of non-printing characters, which could be used to embed a terminal control sequence into the prompt
+#   \]    end a sequence of non-printing characters
+#   \e[   Start color scheme
+#   \e[m  Stop color scheme.
+#   \!     history number
+#   \$     changes based on effective UID ('$' for non-root, '#' for root)
+#   \D{format}   date, in format, inserted into prompt
+
+# colors, for reference:
+#Black       0;30     Dark Gray     1;30
+#Red         0;31     Light Red     1;31
+#Green       0;32     Light Green   1;32
+#Brown       0;33     Yellow        1;33
+#Blue        0;34     Light Blue    1;34
+#Purple      0;35     Light Purple  1;35
+#Cyan        0;36     Light Cyan    1;36
+#Light Gray  0;37     White         1;37
+
+# color variables
+#     RED="\e[0;31m"
+#  YELLOW="\e[33m"
+#LTPURPLE="\e[0;35m"
+#    BLUE="\e[0;44m"
+#   RESET="\e[0m"
+   
+      RED="\[\e[0;31m\]"
+   YELLOW="\[\e[33m\]"
+ LTPURPLE="\[\e[0;35m\]"
+     BLUE="\[\e[0;44m\]"
+    RESET="\[\e[0m\]"
+    
+PROMPT="\u@\h"
+USERNAME="\u"
+MACHINE="\h"
+PROMPTCOLOR=$BLUE
+
+DATETIME="\D{%F %j %T}"
+BRANCH="\$(parse_git_branch)"
+TERMTITLE="\[\e]2;${USERNAME}@${MACHINE}:\w\a\]"
+# Terminal Title: ESC]2;new titleBEL
+
+case $TERM in
+     screen|xterm*)
+        #ps1_base="\[\e]2;\h:\w \a\e[37;44m\]\h  [\D{%F %T}] >\[\e[0m\] "    # orig linux
+        #ps1_base="\[\e]2;\w \a\e[35;1m\]home [\D{%F %T}] >\[\e[0m\] "      # orig mac
+        #ps1_base="\[\e]2;${USERNAME}@${MACHINE}:\w ${LTPURPLE}${PROMPT} [${DATETIME}] ${YELLOW}\$(parse_git_branch)${RESET} ${LTPURPLE}>${RESET} "
+         ps1_base="${TERMTITLE}${PROMPTCOLOR}${PROMPT} [${DATETIME}] ${YELLOW}\$(parse_git_branch)${PROMPTCOLOR}>${RESET} "
+        ;;
+     *)
+        ps1_base="bash\$ "
+        ;;
+esac
+
+# simple prompt
+#ps1_base='\h:\W \u \!\$ '
+
+export PS1="$ps1_base"
+
+
