@@ -26,9 +26,10 @@
   new = green bold
   whitespace = red reverse
 
-# so that 'branch' shows up directly in terminal output, rather than in 'less'
+# so that these commands output directly to the terminal, rather than to 'less'
 [pager]
   branch = false
+  diff = false
   
 # only push to the branch you're on (requires upstream to be set)
 [push]
@@ -44,7 +45,7 @@
   b    = branch           # show branches you have checked out
   ba   = branch -a        # show all of the branches, even remote
   bd   = branch -d        # <branch> delete a branch
-  bdd  = branch -D        # shortcut for --delete --force
+  bD   = branch -D        # shortcut for --delete --force
   br   = branch -r        # show only remote branches
   #############
   co   = checkout         # switch to a branch
