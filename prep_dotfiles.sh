@@ -16,7 +16,7 @@ dotfilesdir=~/dotfiles
 olddir=~/dotfiles_old
 
 # list of files/folders to symlink in homedir
-files="bashrc vimrc screenrc gitconfig gitignore_global"
+files="bashrc vimrc screenrc gitconfig gitignore_global sqliterc latex2html-init"
 
 ##########
 
@@ -27,10 +27,16 @@ mkdir -p $olddir
 # move any existing dotfiles in ~ to olddir directory, then create symlinks 
 for file in $files; do
     echo "------ working on $file ------"
-    echo "Moving $file from ~ to $olddir"
-    mv ~/.$file $olddir/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dotfilesdir/$file ~/.$file
+    
+    if [ -e ~/$files ] ; then
+        echo " ~/$file does not exist"
+    else 
+        echo "Moving $file from ~ to $olddir"
+        mv ~/.$file $olddir/
+        echo "Creating symlink to $file in home directory."
+        ln -s $dotfilesdir/$file ~/.$file
+    fi
+    
 done
 
 echo "Finished"
