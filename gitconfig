@@ -56,7 +56,8 @@
   cm   = commit -m        # <msg> pass a message --message=<msg>
   cam  = commit -am    
   #############
-  l    = log
+  l    = log --name-status
+  sl   = shortlog         # group log messages by username
   tree = log --graph --date=short --pretty=format:'%C(auto) %h | %cn | %cd |%d %s'
   # https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
   # %C(auto)  auto coloring
