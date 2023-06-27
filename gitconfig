@@ -35,12 +35,14 @@
 [push]
   default = simple
 
+[log]
+  follow = true           # show commits from before a file was renamed
 
 [alias]
 # https://gist.github.com/pksunkara/988716 for more aliases
 # https://git-scm.com/docs/
   #############
-  a    = add             # add files to this branch
+  a    = add              # add files to this branch
   #############
   b    = branch           # show branches you have checked out
   ba   = branch -a        # show all of the branches, even remote
@@ -86,9 +88,11 @@
   st = stash
   #############
 
+#branch-name = "!git rev-parse --abbrev-ref HEAD"
+
+#unpushed = "!git diff --stat --cached origin/$(git branch-name)"
 
 
 
-
-
-
+[credential]
+	helper = osxkeychain
